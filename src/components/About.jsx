@@ -18,19 +18,19 @@ export default function About() {
            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
              <a href="#skills" className="spotify-card" style={{ padding: '0.8rem 1rem', color: 'var(--text-white)', textDecoration: 'none', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                <div style={{ width: '40px', height: '40px', backgroundColor: '#E13300', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>🎧</div>
-               Top Genres (Skills)
+               Skills
              </a>
              <a href="#projects" className="spotify-card" style={{ padding: '0.8rem 1rem', color: 'var(--text-white)', textDecoration: 'none', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                <div style={{ width: '40px', height: '40px', backgroundColor: '#1DB954', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>🚀</div>
-               Popular Releases (Projects)
+               Projects
              </a>
              <a href="#experience" className="spotify-card" style={{ padding: '0.8rem 1rem', color: 'var(--text-white)', textDecoration: 'none', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                <div style={{ width: '40px', height: '40px', backgroundColor: '#E8115B', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>📖</div>
-               Tracklist (Experience)
+               Experience
              </a>
              <a href="#originals" className="spotify-card" style={{ padding: '0.8rem 1rem', color: 'var(--text-white)', textDecoration: 'none', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                <div style={{ width: '40px', height: '40px', backgroundColor: '#8D67AB', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>🎵</div>
-               Original Releases
+               Originals
              </a>
            </div>
         </div>

@@ -3,7 +3,7 @@ import React from 'react';
 export default function Originals() {
   return (
     <section id="originals" style={{ marginTop: '3rem' }}>
-      <h2 className="section-title">Original Releases</h2>
+      <h2 className="section-title">Originals</h2>
       
       <div style={{ marginTop: '1.5rem', borderRadius: '12px', overflow: 'hidden' }}>
         <iframe 

@@ -24,7 +24,7 @@ const projects = [
 export default function Projects() {
   return (
     <section id="projects" style={{ marginTop: '3rem' }}>
-      <h2 className="section-title">Popular Releases (Projects)</h2>
+      <h2 className="section-title">Projects</h2>
       
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1.5rem' }}>
         {projects.map((project, idx) => (

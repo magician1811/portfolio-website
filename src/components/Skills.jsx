@@ -24,7 +24,7 @@ const skillCategories = [
 export default function Skills() {
   return (
     <section id="skills" style={{ marginTop: '3rem' }}>
-      <h2 className="section-title">Top Genres (Skills)</h2>
+      <h2 className="section-title">Skills</h2>
       
       <div className="bento-grid">
         {skillCategories.map((category, idx) => (
