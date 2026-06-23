@@ -1,8 +1,47 @@
-import { Play, SkipBack, SkipForward, Repeat, Shuffle, Volume2, Mic2, MonitorSpeaker } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Play, Pause, SkipBack, SkipForward, Repeat, Shuffle, Volume2, VolumeX, Mic2, MonitorSpeaker } from 'lucide-react';
 
 export default function BottomBar() {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5;
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setIsPlaying(true);
+        }).catch(error => {
+          console.log("Autoplay prevented by browser:", error);
+          setIsPlaying(false);
+        });
+      }
+    }
+  }, []);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <div style={{ gridArea: 'now-playing', backgroundColor: '#181818', borderTop: '1px solid #282828', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
+      <audio ref={audioRef} src="/afro-song-music.m4a" loop autoPlay />
       
       {/* Left: Now Playing Info */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '14px', width: '30%' }}>
@@ -20,8 +59,15 @@ export default function BottomBar() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           <Shuffle size={20} color="var(--text-subdued)" />
           <SkipBack size={24} color="var(--text-subdued)" />
-          <div style={{ width: '32px', height: '32px', backgroundColor: 'var(--text-white)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-            <Play size={16} color="var(--spotify-black)" style={{ marginLeft: '2px' }} />
+          <div 
+            onClick={togglePlay}
+            style={{ width: '32px', height: '32px', backgroundColor: 'var(--text-white)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+          >
+            {isPlaying ? (
+              <Pause size={16} color="var(--spotify-black)" />
+            ) : (
+              <Play size={16} color="var(--spotify-black)" style={{ marginLeft: '2px' }} />
+            )}
           </div>
           <SkipForward size={24} color="var(--text-subdued)" />
           <Repeat size={20} color="var(--text-subdued)" />
@@ -40,9 +86,15 @@ export default function BottomBar() {
         <Mic2 size={16} color="var(--text-subdued)" />
         <MonitorSpeaker size={16} color="var(--text-subdued)" />
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100px' }}>
-          <Volume2 size={16} color="var(--text-subdued)" />
+          <div onClick={toggleMute} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+            {isMuted ? (
+              <VolumeX size={16} color="var(--text-subdued)" />
+            ) : (
+              <Volume2 size={16} color="var(--text-subdued)" />
+            )}
+          </div>
           <div style={{ height: '4px', backgroundColor: '#535353', borderRadius: '2px', flex: 1 }}>
-            <div style={{ height: '100%', width: '70%', backgroundColor: 'var(--text-white)', borderRadius: '2px' }}></div>
+            <div style={{ height: '100%', width: isMuted ? '0%' : '70%', backgroundColor: 'var(--text-white)', borderRadius: '2px' }}></div>
           </div>
         </div>
       </div>
