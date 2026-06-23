@@ -5,19 +5,22 @@ const projects = [
     title: 'Ocean Hazard Reporting App (INCOIS)',
     tech: 'JavaScript, Node.js, Python, AI',
     desc: 'Designed for the Smart India Hackathon (SIH) under the Ministry of Earth Sciences. Features a secure, multi-role architecture tailored for different stakeholders and integrates AI-analyzed data streams to process complex environmental metrics into actionable hazard alerts.',
-    color: '#0D72EA'
+    color: '#0D72EA',
+    link: 'https://github.com/Ganeshpriyan1011/SIH_2025_Problem_25039'
   },
   {
     title: 'Fantasy Cricket App',
     tech: 'React.js, Node.js, MongoDB',
     desc: 'Developed a Fantasy Cricket app leveraging React.js for the frontend, Node.js and MongoDB for the backend. Includes features for team creation based on live match data and calculates user points dynamically depending on actual player performance.',
-    color: '#1DB954'
+    color: '#1DB954',
+    link: 'https://github.com/Ganeshpriyan1011/Fantasy-cricket-app'
   },
   {
     title: 'Decentralized Agentic Federated Learning Platform',
     tech: 'Federated Learning, Machine Learning, Blockchain',
     desc: 'A platform addressing financial fraud detection securely using Python, PyTorch, and Blockchain. Showcases skills in machine learning algorithms, distributed systems architecture, and implementing federated learning principles.',
-    color: '#E91429'
+    color: '#E91429',
+    link: 'https://github.com/San2036/Decentralized-Agentic-Federated-Learning'
   }
 ];
 
@@ -28,7 +31,7 @@ export default function Projects() {
       
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1.5rem' }}>
         {projects.map((project, idx) => (
-          <div key={idx} className="spotify-card" style={{ display: 'flex', gap: '2rem', padding: '1.5rem', alignItems: 'center' }}>
+          <a href={project.link} target="_blank" rel="noopener noreferrer" key={idx} className="spotify-card" style={{ display: 'flex', gap: '2rem', padding: '1.5rem', alignItems: 'center', textDecoration: 'none' }}>
             {/* Album Cover */}
             <div style={{ 
               width: '150px', 
@@ -72,7 +75,7 @@ export default function Projects() {
                 {project.desc}
               </p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
