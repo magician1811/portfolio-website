@@ -31,17 +31,9 @@ export default function Projects() {
       
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1.5rem' }}>
         {projects.map((project, idx) => (
-          <a href={project.link} target="_blank" rel="noopener noreferrer" key={idx} className="spotify-card" style={{ display: 'flex', gap: '2rem', padding: '1.5rem', alignItems: 'center', textDecoration: 'none' }}>
+          <a href={project.link} target="_blank" rel="noopener noreferrer" key={idx} className="spotify-card project-card-item">
             {/* Album Cover */}
-            <div style={{ 
-              width: '150px', 
-              height: '150px', 
-              flexShrink: 0,
-              backgroundColor: project.color, 
-              borderRadius: '8px', 
-              boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
-              position: 'relative'
-            }}>
+            <div className="project-album-cover" style={{ backgroundColor: project.color }}>
               {/* Hover Play Button */}
               <div style={{ 
                 position: 'absolute', 

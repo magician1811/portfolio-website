@@ -68,14 +68,156 @@ a:hover {
   height: 100vh;
 }
 
+.sidebar-container {
+  grid-area: sidebar;
+  background-color: var(--spotify-black);
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mobile-top-bar {
+  display: none;
+}
+
+.mobile-drawer-overlay {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  :root {
+    --layout-bottom-bar-height: 72px;
+  }
   .app-layout {
     grid-template-areas:
       "main-view"
       "now-playing";
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr var(--layout-bottom-bar-height);
+    height: 100vh;
+    height: 100dvh; /* dynamic viewport height for mobile browsers */
+  }
+
+  .sidebar-container {
+    display: none;
+  }
+
+  .mobile-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background-color: var(--spotify-black);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .mobile-drawer-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+  }
+
+  .mobile-drawer-content {
+    background-color: var(--spotify-base);
+    width: 80%;
+    max-width: 320px;
+    height: 100%;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+    animation: slideIn 0.25 ease-out;
   }
 }
+
+/* Bottom Bar Styling */
+.bottom-bar-container {
+  grid-area: now-playing;
+  background-color: #181818;
+  border-top: 1px solid #282828;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.now-playing-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 30%;
+}
+
+.player-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 40%;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.player-extra-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  width: 30%;
+}
+
+@media (max-width: 768px) {
+  .bottom-bar-container {
+    padding: 0 12px;
+  }
+  
+  .now-playing-info {
+    width: auto;
+    flex: 1;
+    gap: 10px;
+  }
+
+  .player-controls {
+    width: auto;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .progress-bar-container,
+  .desktop-control-icon,
+  .volume-slider {
+    display: none !important;
+  }
+
+  .player-extra-controls {
+    width: auto;
+    gap: 8px;
+  }
+
+  .volume-control-wrapper {
+    width: auto !important;
+  }
+}
+
+
 
 .main-view {
   grid-area: main-view;
@@ -88,9 +230,100 @@ a:hover {
   flex-direction: column;
 }
 
+.main-content-container {
+  padding: 0 2rem 4rem 2rem;
+}
+
 @media (max-width: 768px) {
   .main-view {
-    margin: 8px;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .main-content-container {
+    padding: 0 1rem 3rem 1rem;
+  }
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 2rem 2rem 0 2rem;
+}
+
+.hero-profile-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.hero-avatar {
+  width: 232px;
+  height: 232px;
+  border-radius: 50%;
+  background-color: #282828;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 60px rgba(0,0,0,0.5);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.hero-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--text-white);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin: 0;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 1.5rem 1rem 0 1rem;
+  }
+
+  .hero-profile-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .hero-avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  .hero-text-container {
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+    letter-spacing: -1px;
+    margin-top: 0.25rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
   }
 }
 
@@ -100,6 +333,12 @@ a:hover {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.3rem;
+  }
 }
 
 /* Play Button */
@@ -121,6 +360,20 @@ a:hover {
   background-color: var(--spotify-green-hover);
 }
 
+/* About Grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 /* Cards */
 .spotify-card {
   background-color: var(--spotify-highlight);
@@ -134,11 +387,49 @@ a:hover {
   background-color: var(--spotify-elevated);
 }
 
+.project-card-item {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem;
+  align-items: center;
+  text-decoration: none;
+}
+
+.project-album-cover {
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+@media (max-width: 650px) {
+  .project-card-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+
+  .project-album-cover {
+    width: 100%;
+    height: 160px;
+  }
+}
+
 /* Bento Box Grid */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .bento-item {
@@ -176,6 +467,7 @@ a:hover {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   align-items: center;
+  gap: 0.5rem;
 }
 .tracklist-row:hover {
   background-color: rgba(255,255,255,0.1);
@@ -188,3 +480,21 @@ a:hover {
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
 }
+
+.tracklist-date {
+  color: var(--text-subdued);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .tracklist-row {
+    grid-template-columns: 24px 1fr auto;
+    padding: 0.5rem 0.25rem;
+  }
+  .tracklist-date {
+    font-size: 0.75rem;
+  }
+}
+
+

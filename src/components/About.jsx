@@ -2,7 +2,7 @@ export default function About() {
   return (
     <section id="about" style={{ marginTop: '3rem' }}>
       <h2 className="section-title">About</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+      <div className="about-grid">
         <div style={{ color: 'var(--text-subdued)', fontSize: '1rem', lineHeight: '1.6' }}>
           <p style={{ marginBottom: '1rem' }}>
             Computer Science Engineering student seeking to transition academic knowledge into practical industry experience. Proficient in foundational technologies including C, C++, Java, Python, and DBMS, with an interest in full-stack JavaScript development.

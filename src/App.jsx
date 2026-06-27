@@ -27,7 +27,7 @@ function App() {
             <div style={{ background: 'linear-gradient(to bottom, rgba(18,18,18,0.3) 0%, var(--spotify-base) 100%), url("/banner.jpg") center/cover no-repeat', paddingBottom: '2rem' }}>
               <Hero />
             </div>
-            <div style={{ padding: '0 2rem 4rem 2rem' }}>
+            <div className="main-content-container">
               <About />
               <Skills />
               <Projects />

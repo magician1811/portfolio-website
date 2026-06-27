@@ -78,7 +78,7 @@ function Tracklist({ items }) {
             <span style={{ color: 'var(--text-white)', fontSize: '1rem', fontWeight: '500' }}>{item.title}</span>
             <span style={{ color: 'var(--text-subdued)', fontSize: '0.85rem' }}>{item.org} - {item.desc}</span>
           </div>
-          <span style={{ color: 'var(--text-subdued)', fontSize: '0.9rem', textAlign: 'right' }}>{item.date}</span>
+          <span className="tracklist-date">{item.date}</span>
         </div>
       ))}
     </div>
