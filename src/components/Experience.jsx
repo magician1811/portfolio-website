@@ -4,8 +4,12 @@ const internships = [
   {
     title: 'AIML Intern',
     org: 'Giggso India Private Limited',
-    date: 'June 2025',
-    desc: 'Working on AI and Machine Learning applications.'
+    date: 'June 4 – June 30, 2025',
+    desc: [
+      'Conducted model performance metrics analysis to evaluate dataset trends and improve pipeline transparency.',
+      'Analyzed the Giskard AI framework for scanning, testing, and debugging vulnerabilities in machine learning models.',
+      'Executed test suites for external APIs to verify structural integrity and seamless system integration.'
+    ]
   }
 ];
 
@@ -26,10 +30,22 @@ const education = [
 
 const certifications = [
   {
-    title: 'Python in Data Science',
-    org: 'NPTEL',
-    date: 'Certified',
-    desc: 'Completed with 75% score.'
+    title: 'Python in Data Science with 75%',
+    org: 'NPTEL Elite Certificate',
+    date: '',
+    desc: ''
+  },
+  {
+    title: 'SQL (Intermediate) Certification',
+    org: 'HackerRank',
+    date: '',
+    desc: ''
+  },
+  {
+    title: 'Cloud IoT Based Smart Community Workshop',
+    org: 'Tekion',
+    date: '',
+    desc: ''
   }
 ];
 
@@ -37,25 +53,25 @@ const extraCurricular = [
   {
     title: 'Badminton District Player',
     org: 'Sports',
-    date: 'Past',
+    date: '',
     desc: 'Represented at the district level in Badminton.'
   },
   {
     title: 'Zonal Tennis',
     org: 'Madras Institute of Technology',
-    date: 'Present',
+    date: '',
     desc: 'Representing MIT in Zonal Tennis tournaments.'
   },
   {
     title: 'Murugappa Madras Quotient Quiz',
     org: 'Quizzing',
-    date: 'Past',
+    date: '',
     desc: 'Participated in quizzes and won the Murugappa Madras Quotient Quiz.'
   },
   {
     title: 'Music Producer & Singer',
     org: 'Music',
-    date: 'Present',
+    date: '',
     desc: 'Music Producer and Singer trained in Carnatic Music.'
   }
 ];
@@ -76,7 +92,20 @@ function Tracklist({ items }) {
           <span style={{ color: 'var(--text-subdued)', fontSize: '1rem' }}>{idx + 1}</span>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ color: 'var(--text-white)', fontSize: '1rem', fontWeight: '500' }}>{item.title}</span>
-            <span style={{ color: 'var(--text-subdued)', fontSize: '0.85rem' }}>{item.org} - {item.desc}</span>
+            {Array.isArray(item.desc) ? (
+              <div style={{ color: 'var(--text-subdued)', fontSize: '0.85rem', marginTop: '4px' }}>
+                <span style={{ fontWeight: '500' }}>{item.org}</span>
+                <ul style={{ margin: '4px 0 0 16px', padding: 0 }}>
+                  {item.desc.map((d, i) => (
+                    <li key={i} style={{ marginBottom: '2px', listStyleType: 'disc' }}>{d}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <span style={{ color: 'var(--text-subdued)', fontSize: '0.85rem' }}>
+                {item.org}{item.org && item.desc ? ' - ' : ''}{item.desc}
+              </span>
+            )}
           </div>
           <span className="tracklist-date">{item.date}</span>
         </div>
@@ -88,11 +117,11 @@ function Tracklist({ items }) {
 export default function Experience() {
   return (
     <section id="experience" style={{ marginTop: '3rem', paddingBottom: '2rem' }}>
-      <h2 className="section-title">Internships</h2>
-      <Tracklist items={internships} />
-
       <h2 className="section-title">Education</h2>
       <Tracklist items={education} />
+
+      <h2 className="section-title">Internships</h2>
+      <Tracklist items={internships} />
 
       <h2 className="section-title">Certifications</h2>
       <Tracklist items={certifications} />

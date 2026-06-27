@@ -13,11 +13,6 @@ const skillCategories = [
     title: 'Core Concepts',
     skills: ['Data Structures', 'OOP', 'Operating Systems'],
     color: '#E8115B'
-  },
-  {
-    title: 'Tools',
-    skills: ['Git', 'VS Code', 'Postman'],
-    color: '#8D67AB'
   }
 ];
 
